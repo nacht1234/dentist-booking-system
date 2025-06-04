@@ -15,6 +15,43 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+
+                    @role('admin')
+                    <x-nav-link :href="route('admin.dentists.index')" :active="request()->routeIs('admin.dentists.*')">
+                        {{ __('Dentists') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('admin.schedules.index')" :active="request()->routeIs('admin.schedules.*')">
+                        {{ __('Schedules') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('admin.clients.index')" :active="request()->routeIs('admin.clients.*')">
+                        {{ __('Clients') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('admin.bookings.index')" :active="request()->routeIs('admin.bookings.*')">
+                        {{ __('Bookings') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('admin.users.index')" :active="request()->routeIs('admin.users.*')">
+                        {{ __('User Management') }}
+                    </x-nav-link>
+                    @endrole
+
+                    @role('staff')
+                    <x-nav-link :href="route('staff.bookings.index')" :active="request()->routeIs('staff.bookings.*')">
+                        {{ __('Customer Bookings') }}
+                    </x-nav-link>
+                    @endrole
+
+                    @role('client')
+                    <x-nav-link :href="route('client.bookings.create')" :active="request()->routeIs('client.bookings.create')">
+                        {{ __('Booking a Dentist') }}
+                    </x-nav-link>
+
+                    <x-nav-link :href="route('client.bookings.index')" :active="request()->routeIs('client.bookings.index')">
+                        {{ __('My Bookings') }}
+                    </x-nav-link>
+                    @endrole
+
+                    @role('admin')
+                    @endrole
                 </div>
             </div>
 
